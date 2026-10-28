@@ -1,0 +1,6 @@
+# Compatibility ranges (same lines as backend/pyproject.toml [api]). Tested here with starlette 1.8.0,
+# pydantic 2.14.1, uvicorn 0.54.0 on CPython 3.13. No lockfile: it could not be resolved against a package index
+# from the build environment, so generate one on a networked machine (pip-compile or `pip freeze`) before relying on it.
+starlette>=0.40
+pydantic>=2.6
+uvicorn>=0.30

@@ -1,0 +1,80 @@
+[project]
+name = "finguard-backend"
+version = "0.1.0"
+description = "FinGuard pure deterministic financial engine (finguard_core) and its test suite."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+api = [
+    "starlette>=0.40",
+    "pydantic>=2.6",
+    "uvicorn>=0.30",
+]
+# PostgreSQL persistence layer (PR-3a). These are COMPATIBILITY RANGES by major release line only; the exact
+# versions and artifact hashes used in CI are recorded in requirements/persistence.lock.txt, which is generated
+# from this file against a trusted package index (tools/make_persistence_lock.sh). "psycopg[binary]" bundles
+# libpq so no system client library is needed in the test environment.
+persistence = [
+    "sqlalchemy>=2.0,<2.1",
+    "alembic>=1.13,<2",
+    "psycopg[binary]>=3.1,<4",
+]
+dev = [
+    "httpx>=0.27",
+    "pytest>=8.0",
+    "hypothesis>=6.100",
+    "ruff>=0.6",
+    "mypy>=1.10",
+    "import-linter>=2.0",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["finguard_core", "finguard_api"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.importlinter]
+root_packages = ["finguard_core", "finguard_api"]
+
+[[tool.importlinter.contracts]]
+name = "finguard_core is pure: no I/O, web, db, or AI dependencies"
+type = "forbidden"
+source_modules = ["finguard_core"]
+forbidden_modules = [
+    "os.path",
+    "pathlib",
+    "socket",
+    "requests",
+    "httpx",
+    "urllib",
+    "urllib.request",
+    "sqlalchemy",
+    "psycopg2",
+    "fastapi",
+    "flask",
+    "openai",
+    "anthropic",
+]
+
+[[tool.importlinter.contracts]]
+name = "the core never depends on the API or any web framework"
+type = "forbidden"
+source_modules = ["finguard_core"]
+forbidden_modules = ["finguard_api", "starlette", "fastapi", "pydantic", "uvicorn"]
+
+[[tool.importlinter.contracts]]
+name = "the API has no persistence, auth or AI dependency (later, separate PRs)"
+type = "forbidden"
+source_modules = ["finguard_api"]
+forbidden_modules = ["sqlalchemy", "psycopg2", "asyncpg", "alembic", "jwt", "openai", "anthropic"]

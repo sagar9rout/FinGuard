@@ -1,0 +1,24 @@
+/* FinGuard · Midnight Trust. Deep navy surfaces, one cool accent, tone colours reserved for engine outcomes.
+   No external fonts, images or URLs (the production CSP allows only same-origin resources). */
+:root {
+  --bg: #0a1020;
+  --bg-2: #0e1730;
+  --surface: #121c36;
+  --surface-2: #18243f;
+  --line: #2a3b60;
+  --text: #e8edf8;
+  --muted: #a8b6d2;
+  --accent: #7cc4ff;
+  --accent-ink: #06223a;
+  --now: #5ee6a8;
+  --plan: #7cc4ff;
+  --later: #f5c76b;
+  --not: #ff9a9a;
+  --uncertified: #c9bbff;
+  --unreadable: #c3cbdb;
+  --focus: #ffd166;
+  --radius: 10px;
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}

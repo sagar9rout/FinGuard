@@ -1,0 +1,39 @@
+[project]
+name = "finguard-server"
+version = "0.1.0"
+description = "FinGuard loopback-only HTTP layer over backend/finguard_api (no financial logic of its own)."
+requires-python = ">=3.11"
+dependencies = [
+    "starlette>=0.40",
+    "pydantic>=2.6",
+    "uvicorn>=0.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "httpx>=0.27",
+    "pytest>=8.0",
+    "ruff>=0.6",
+    "mypy>=1.10",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-p no:cacheprovider"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["app"]
+cache_dir = "/dev/null"

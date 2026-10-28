@@ -1,0 +1,10 @@
+{
+  "description": "Synthetic, hand-authored fixture (not derived from the dataset): a comfortable full payment today.",
+  "as_of": "2026-05-01",
+  "home_currency": "INR",
+  "current_available_balance": "20000",
+  "minimum_balance_to_keep": "5000",
+  "purchase_amount": "2500",
+  "purchase_currency": "INR",
+  "expected_status": "affordable_now"
+}

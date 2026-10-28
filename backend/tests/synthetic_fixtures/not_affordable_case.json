@@ -1,0 +1,10 @@
+{
+  "description": "Synthetic, hand-authored fixture (not derived from the dataset): no candidate is ever safe within the window.",
+  "as_of": "2026-05-01",
+  "home_currency": "INR",
+  "current_available_balance": "1000",
+  "minimum_balance_to_keep": "5000",
+  "purchase_amount": "3000",
+  "purchase_currency": "INR",
+  "expected_status": "not_affordable"
+}

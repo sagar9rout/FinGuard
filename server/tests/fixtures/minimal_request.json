@@ -1,0 +1,30 @@
+{
+  "as_of": "2026-10-24",
+  "profile": {
+    "home_currency": "INR",
+    "current_available_balance": "150000",
+    "minimum_balance_to_keep": "30000",
+    "balance_as_of": "2026-10-24"
+  },
+  "purchase": {
+    "amount": "12000",
+    "currency": "INR",
+    "allows_partial_payment": true
+  },
+  "preferences": {
+    "accepted_methods": ["full_payment", "installments", "partial", "wait", "full_payment_with_spending_changes"],
+    "max_installment_term_days": 90
+  },
+  "events": [
+    {
+      "event_id": "syn-rent",
+      "event_date": "2026-11-01",
+      "amount": "22000",
+      "currency": "INR",
+      "direction": "debit",
+      "status": "scheduled",
+      "category": "rent"
+    }
+  ],
+  "config": { "horizon_days": 30 }
+}
